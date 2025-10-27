@@ -1,0 +1,16 @@
+#giorni della settimana
+
+settimana = ["Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato", "Domenica"]
+giorni = []
+
+for x in range(1,32):
+    giorni.append(x)
+
+settimana_tagliata1 = settimana[2:7]
+settimana_tagliata2 = settimana[0:6]
+giorni_mese= settimana_tagliata1 + settimana*3 + settimana_tagliata2
+
+for x,y in zip(giorni, giorni_mese):
+    print(x, " ", y])
+
+

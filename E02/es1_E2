@@ -1,0 +1,7 @@
+#somma dei primi 100 numeri naturali
+
+n=0
+for i in range(101):
+   n = n + i
+    
+print("La somma dei primi 100 numeri naturali è ", n)

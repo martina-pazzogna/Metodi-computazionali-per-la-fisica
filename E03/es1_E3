@@ -1,0 +1,49 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from mpl_toolkits.axes_grid1.inset_locator import inset_axes, mark_inset
+
+tabella_pianeti = pd.read_csv('kplr010666592-2011240104155_slc.csv', delimiter = ',')
+print(tabella_pianeti.columns)
+
+#grafico
+plt.plot(tabella_pianeti['TIME'], tabella_pianeti['PDCSAP_FLUX'])
+plt.xlabel('Time[BJD]')
+plt.ylabel('Flux [$e^-/s$]')
+plt.title('Grafico del flusso in funzione del tempo')
+plt.show()
+
+#grafico con punti
+plt.plot(tabella_pianeti['TIME'], tabella_pianeti['PDCSAP_FLUX'], 'o')
+plt.xlabel('Time[BJD]')
+plt.ylabel('Flux [$e^-/s$]')
+plt.title('Grafico del flusso in funzione del tempo')
+plt.show()
+
+#grafico con barre di errore
+plt.errorbar(tabella_pianeti['TIME'], tabella_pianeti['PDCSAP_FLUX'], yerr= tabella_pianeti['PDCSAP_FLUX_ERR'], fmt='o')
+plt.xlabel('Time[BJD]')
+plt.ylabel('Flux [$e^-/s$]')
+plt.title('Grafico del flusso in funzione del tempo')
+plt.show()
+
+#grafico con intervallo selezionato
+tabella_minimo = tabella_pianeti.loc[(tabella_pianeti['TIME']> 947.9) & (tabella_pianeti['TIME']< 948.4), ['TIME', 'PDCSAP_FLUX','PDCSAP_FLUX_ERR' ]]
+plt.errorbar(tabella_minimo['TIME'], tabella_minimo['PDCSAP_FLUX'], yerr= tabella_minimo['PDCSAP_FLUX_ERR'], fmt='o')
+plt.xlabel('Time[BJD]')
+plt.ylabel('Flux [$e^-/s$]')
+plt.title('Grafico del flusso in funzione del tempo')
+plt.show()
+
+#grafico con riquadro
+fig, ax = plt.subplots(figsize=(12,6))
+plt.errorbar(tabella_pianeti['TIME'], tabella_pianeti['PDCSAP_FLUX'], yerr= tabella_pianeti['PDCSAP_FLUX_ERR'], fmt='o')
+plt.xlabel('Time[BJD]')
+plt.ylabel('Flux [$e^-/s$]')
+plt.title('Grafico del flusso in funzione del tempo con riquadro')
+
+riquadro = inset_axes(ax, width= '30%', height= '20%', loc= 'upper right')
+riquadro.errorbar(tabella_minimo['TIME'], tabella_minimo['PDCSAP_FLUX'], yerr= tabella_minimo['PDCSAP_FLUX_ERR'], fmt='o')
+riquadro.set_title('Zoom intorno al minimo')
+
+plt.show()

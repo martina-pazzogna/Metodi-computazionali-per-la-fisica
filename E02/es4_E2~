@@ -1,0 +1,16 @@
+#data di nascita e calcolo giorni
+
+from datetime import datetime, timedelta
+
+birthdate_str = input("Scrivi la tua data e ora di nascita nel formato gg-mm-aaaa 00:00:00:  ")
+birthdate  = datetime.strptime(birthdate_str, "%d-%m-%Y %H:%M:%S")
+datenow = datetime.now()
+
+diff = datenow - birthdate
+diff_total = diff.total_seconds()
+diff_giorni =int( diff_total/(60 * 24))
+diff_anni =int( diff_giorni/365)
+print("La tua età in anni è: ", diff_anni, "\n")
+print("La tua età in giorni è: ", diff_giorni, "\n")
+print("La tua età in secondi è: ", diff_total)
+

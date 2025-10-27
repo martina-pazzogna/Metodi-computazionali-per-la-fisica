@@ -1,0 +1,10 @@
+#somma dei primi n numeri naturali
+
+n = input("Immettere un numero intero: ")
+n_int = int(n)
+
+somma = 0
+for i in range(n_int+1):
+    somma = somma + i
+
+print("La somma dei primi ", n_int, " numeri naturali è ", somma)
