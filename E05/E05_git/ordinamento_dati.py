@@ -37,8 +37,9 @@ x_m = x[mask]
 n, bins, p = plt.hist(np.log10(x_m), bins= 100, color = 'orange')
 plt.xlabel('$log_{10}(\Delta t)$')
 plt.ylabel('Numero di eventi')
-plt.title('Istogramma del $log_{10}(\Delta t)$ del modulo 0')
+plt.title('Istogramma del $log_{10}(\Delta t)$ di tutti gli Hit')
 plt.show()
+
 
 
 
